@@ -1,0 +1,203 @@
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f3f5f8;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 0.6rem 1rem 0.6rem 1rem;
+  .header-btn {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    margin: 0;
+    border: 1px solid #e7e9eb;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    .header-btn-icon {
+      width: 14px;
+      height: 14px;
+    }
+    .header-btn-title {
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .header-btn-action {
+      width: 16px;
+      height: 16px;
+    }
+  }
+  .filter-container {
+    position: absolute;
+    margin-top: 0.5rem;
+    padding: 16px;
+    background-color: #f8f9fb;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1;
+    .filter {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4rem;
+      .group-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: #848484;
+      }
+      .group-options {
+        display: flex;
+        width: 6rem;
+        padding: 2px 4px;
+        border: 1px solid #e7e9eb;
+        border-radius: 4px;
+        option {
+          font-size: 10px;
+          font-weight: 400;
+          color: #848484;
+        }
+      }
+    }
+  }
+}
+
+.kanban-board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 34px;
+
+  .kanban-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    width: 100%;
+
+    .group-column {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .ticket-group-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .ticket-group-left,
+      .ticket-group-right {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        gap: 12px;
+        .ticket-group-icon {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 15px;
+            height: 15px;
+          }
+        }
+        .ticket-group-text {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .tickets-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .ticket-card {
+      background-color: #ffffff;
+      padding: 16px 24px 24px 16px;
+      border: 1px solid #dde1e3;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .ticket-title {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 500;
+        color: #282a2f;
+        word-wrap: break-word;
+      }
+
+      .ticket-user {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+
+        .ticket-id {
+          font-size: 12px;
+          font-weight: 300;
+          color: #6b6f76;
+        }
+      }
+    }
+  }
+}
+
+.ticket-user-avtar {
+  position: relative;
+  width: 30px;
+  height: 30px;
+
+  .user-avtar {
+    display: flex;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  .user-status {
+    display: flex;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #dfe1e4;
+    border-radius: 50%;
+    bottom: -2px;
+    right: -2px;
+    border: 1.5px solid #ffffff;
+  }
+}
+
+@media (max-width: 430px) {
+  .kanban-board-container {
+    margin: 16px 8px;
+
+    .kanban-board {
+      grid-template-columns: 1fr;
+      gap: 8px;
+
+      .group-column {
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
