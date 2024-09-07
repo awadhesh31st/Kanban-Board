@@ -18,12 +18,14 @@ export type ResponseDataType = {
   users: UserType[];
 };
 
+export type UserDataType = { [key: string]: UserType };
+
 export type AppContextType = {
   priorityLabels: string[];
   tickets: TicketType[];
   setTickets: React.Dispatch<React.SetStateAction<TicketType[]>>;
-  users: UserType[];
-  setUsers: React.Dispatch<React.SetStateAction<UserType[]>>;
+  users: UserDataType;
+  setUsers: React.Dispatch<React.SetStateAction<UserDataType>>;
   groupBy: string;
   setGroupBy: (value: string) => void;
   sortBy: string;

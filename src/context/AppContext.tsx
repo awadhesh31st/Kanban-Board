@@ -1,12 +1,37 @@
 import React, { createContext, useState, ReactNode, useContext, useEffect } from "react";
-import { AppContextType, GroupingType, KeyValueType, ResponseDataType, TicketType, UserType } from "../types";
+import {
+  AppContextType,
+  GroupingType,
+  KeyValueType,
+  ResponseDataType,
+  TicketType,
+  UserDataType,
+  UserType,
+} from "../types";
 import { priorityLabels } from "../utils";
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+const processUserData = (users: UserType[]): { [key: string]: UserType } => {
+  return users.reduce(
+    (acc, user) => {
+      acc[user.id] = user;
+      return acc;
+    },
+    {} as { [key: string]: UserType }
+  );
+};
+
+const processUserKeyValue = (users: UserType[]): KeyValueType => {
+  return users.reduce((acc, user) => {
+    acc[user.id] = user.name;
+    return acc;
+  }, {} as KeyValueType);
+};
+
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [tickets, setTickets] = useState<TicketType[]>([]);
-  const [users, setUsers] = useState<UserType[]>([]);
+  const [users, setUsers] = useState<UserDataType>({});
   const [groupingType, setGroupingType] = useState<GroupingType>({});
   const [activeGroup, setActiveGroup] = useState<KeyValueType>({});
   const [groupBy, setGroupBy] = useState<string>("status");
@@ -21,12 +46,11 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         if (result) {
           const { tickets = [], users = [] } = result;
           setTickets(tickets);
-          setUsers(users);
 
-          const userKeyValue: KeyValueType = users.reduce((acc, user) => {
-            acc[user.id] = user.name;
-            return acc;
-          }, {} as KeyValueType);
+          const userData: UserDataType = processUserData(users);
+          const userKeyValue = processUserKeyValue(users);
+
+          setUsers(userData);
 
           const updatedGrouping: GroupingType = {
             status: {

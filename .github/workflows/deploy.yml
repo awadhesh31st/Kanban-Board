@@ -4,28 +4,28 @@ name: Deploy React App
 on:
   push:
     branches:
-      - main  # Trigger the workflow on pushes to the main branch
+      - main # Trigger the workflow on pushes to the main branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'  # Specify the Node.js version
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18" # Specify the Node.js version
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build the project
-      run: npm run build
+      - name: Build the project
+        run: npm run build
 
-    - name: Deploy
-      run: |
-        # Add your deployment script here
-        echo "Deploying to your target environment"
+      - name: Deploy
+        run: |
+          # Add your deployment script here
+          echo "Deploying to your target environment"
