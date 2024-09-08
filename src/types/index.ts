@@ -21,7 +21,6 @@ export type ResponseDataType = {
 export type UserDataType = { [key: string]: UserType };
 
 export type AppContextType = {
-  priorityLabels: string[];
   tickets: TicketType[];
   setTickets: React.Dispatch<React.SetStateAction<TicketType[]>>;
   users: UserDataType;
