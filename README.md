@@ -2,6 +2,8 @@
 
 This is a **Kanban Board Application** built using **ReactJS** with **Pure CSS. The application dynamically groups and sorts tickets based on user input, offering a seamless and visually appealing experience.
 
+<img width="1706" alt="image" src="https://github.com/user-attachments/assets/62f49646-304b-41e9-b6e0-6c22cce694f8">
+
 ## Features
 
 ### Grouping Options
