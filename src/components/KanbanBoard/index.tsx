@@ -32,7 +32,7 @@ const KanbanBoard: React.FC = () => {
   const groupColumns = useMemo(() => {
     return Object.keys(activeGroup).map((group) => {
       const ticketList = groupedTickets(group);
-      return <GroupColumn key={group} group={activeGroup[group]} tickets={ticketList} />;
+      return <GroupColumn key={group} groupKey={group} group={activeGroup[group]} tickets={ticketList} />;
     });
   }, [activeGroup, groupedTickets]);
 

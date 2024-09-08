@@ -5,12 +5,13 @@ import { useAppContext } from "../../context/AppContext";
 import Avtar from "../TicketCard/Avtar";
 
 type GroupColumnProps = {
+  groupKey: string;
   group: string;
   tickets: TicketType[];
 };
 
-const GroupColumn: React.FC<GroupColumnProps> = ({ group, tickets }) => {
-  const { groupBy } = useAppContext();
+const GroupColumn: React.FC<GroupColumnProps> = ({ groupKey, group, tickets }) => {
+  const { groupBy, users } = useAppContext();
   return (
     <div className="group-column">
       <div className="ticket-group-container">
@@ -20,7 +21,7 @@ const GroupColumn: React.FC<GroupColumnProps> = ({ group, tickets }) => {
               <img src={`${process.env.PUBLIC_URL}/assets/img/${group}.svg`} alt="avtar" />
             </span>
           )}
-          {groupBy === "user" && <Avtar />}
+          {groupBy === "user" && <Avtar status={users?.[`${groupKey}`]?.available} />}
           <span className="ticket-group-text">{group}</span>
           <span className="ticket-group-text">{(tickets || [])?.length}</span>
         </div>
