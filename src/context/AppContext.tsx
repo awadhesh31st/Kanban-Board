@@ -8,7 +8,6 @@ import {
   UserDataType,
   UserType,
 } from "../types";
-import { priorityLabels } from "../utils";
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -101,7 +100,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   return (
     <AppContext.Provider
       value={{
-        priorityLabels,
         tickets,
         setTickets,
         users,
