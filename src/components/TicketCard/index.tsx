@@ -8,8 +8,10 @@ type TicketCardProps = {
 };
 
 const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
-  const { groupBy, groupingType } = useAppContext();
-  const { id, title, status, priority, tag = [] } = ticket;
+  const { groupBy, groupingType, users } = useAppContext();
+  const { id, title, status, priority, tag = [], userId } = ticket;
+
+  console.log(users, userId);
 
   const statusIconSrc = useMemo(() => {
     return groupBy !== "status" ? `${process.env.PUBLIC_URL}/assets/img/${groupingType?.status?.[status]}.svg` : null;
@@ -25,7 +27,7 @@ const TicketCard: React.FC<TicketCardProps> = ({ ticket }) => {
     <div className="ticket-card">
       <div className="ticket-user">
         <span className="ticket-id">{id}</span>
-        {groupBy !== "user" && <Avtar />}
+        {groupBy !== "user" && <Avtar status={users?.[`${userId}`]?.available} />}
       </div>
 
       <div className="ticket-title">

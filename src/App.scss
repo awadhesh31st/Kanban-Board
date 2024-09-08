@@ -229,11 +229,16 @@ body {
     position: absolute;
     width: 8px;
     height: 8px;
-    background: #dfe1e4;
     border-radius: 50%;
     bottom: -2px;
     right: -2px;
     border: 1.5px solid #ffffff;
+  }
+  .active {
+    background: #0eb04a;
+  }
+  .inactive {
+    background: #dfe1e4;
   }
 }
 
